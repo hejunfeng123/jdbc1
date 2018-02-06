@@ -1,0 +1,48 @@
+/** 事务必须服从ISO/IEC所制定的ACID原则。ACID是原子性（atomicity）、一致性（consistency）、隔离性 
+（isolation）和持久性（durability）的缩写
+1、 事务是为解决数据安全操作提出的，事务控制实际上就是控制数据的安全访问*/
+
+/*创建账户表*/
+ create table account(
+     id int primary key auto_increment,
+     name varchar(40),
+     money float
+ );
+
+/*插入测试数据*/
+insert into account(name,money) values('A',1000);
+insert into account(name,money) values('B',1000);
+insert into account(name,money) values('C',1000);
+
+start transaction;
+
+select * from account;
+
+update account set money=money-100 where name='A';
+
+select * from account where name = 'A';
+
+start transaction;/**开启事物*/
+
+update account set money = money - 100 where name = 'A';
+update account set money = money + 100 where name = 'B';
+
+select * from account;
+
+commit;			/**提交事物*/
+
+start transaction ;
+
+update account set money = money - 100 where name = 'A';
+
+update account set money = money + 100 where name = 'B';
+
+update account set money = money - 100 where name = 'A' ;
+
+update account set money = money + 100 where name = 'B';
+
+select * from account where name IN ('A','B');
+
+rollback ;		/*手动回滚事物，上面的修改就不起作用了*/
+
+select * from account where name IN ('A','B');
