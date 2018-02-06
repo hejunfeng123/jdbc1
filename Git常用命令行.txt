@@ -1,0 +1,50 @@
+初次提交：
+- 通过git add 将文件 工作区 ---》暂存区 (本地)
+- 通过git commit 将文件 暂存区 ---》分支 (本地)
+- 通过git push 将文件 分支 ---》远程库 (github)
+
+提交改动：
+- 通过git commit将文件 暂存区 ---》分支 (本地)
+- 通过git push 将文件 分支 ---》远程库 (github)
+
+pull&push
+- 通过git pull 将文件 远程库 ---》分支 (本地)
+- 通过git push 将文件 分支 ---》远程库 (github)
+
+01.设置名字：
+git config --global user.name "你的名字"
+ 
+02.设置邮箱：
+git config --global user.email "你的邮箱"
+ 
+03.输出更显目的设置
+git config --global color.ui auto
+ 
+04.设置SSH Key
+ssh-keygen -t rsa -C "你的邮箱"
+ 
+————————————基础——————————————————
+ 
+05.克隆一份到本地
+git clone git@github.com:dunitian/test.git（ssh的项目地址）
+ 
+06.把文件提交到仓库
+git add dnt.txt （添加到暂存区）
+git commit -m "注释" （提交）
+ 
+07.push一下，更新github
+git push
+ 
+————————————查看——————————————————
+ 
+08.查看自己的配置
+cat ~/.gitconfig
+ 
+09.查看key
+cat ~/.ssh/id_rsa.pub
+ 
+10.查看git的状态
+git status
+ 
+11.查看提交日记
+git log
